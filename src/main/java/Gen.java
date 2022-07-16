@@ -64,7 +64,7 @@ public static void writeToFile(String version, String z1, String z2, int base,St
             bufferedWriter = new BufferedWriter(fileWriter);
             printWriter = new PrintWriter(bufferedWriter);
 
-            for(int i = 0; i < 101;i++) {
+            for(int i = 0; i < 15;i++) {
                 printWriter.println(line);
             }
 
@@ -115,7 +115,7 @@ public static void writeToFile(String version, String z1, String z2, int base,St
     }
 
     public static void main(String[] args) {
-        int base = 10;
+        int base = 16;
         //int length = 8;
         String alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !\"#$%&\\'()*+,-./:;<=>?@[\\\\]^_`{|}~";
 
@@ -144,6 +144,20 @@ public static void writeToFile(String version, String z1, String z2, int base,St
         }
 
          */
+        /*
+        for(int i = 100;i <= 2000;i+=100) {
+            for(int j = 0; j < 10;j++) {
+                int length = i;
+                String z1 = Gen.generateNumber(alphabet.substring(0, base), length);
+                String z2 = Gen.generateNumber(alphabet.substring(0, base), length);
+                String line = "./main " + version + " " + " -b" + base + " -a" + alphabet.substring(0, base) + " -o" + operation + " -B100 " + z1 + " " + z2;
+                writeToFile1(line);
+                line = "./main " + version1 + " " + " -b" + base + " -a" + alphabet.substring(0, base) + " -o" + operation + " -B100 " + z1 + " " + z2;
+                writeToFile1(line);
+            }
+        }
+
+         */
 
 
 
@@ -161,22 +175,35 @@ public static void writeToFile(String version, String z1, String z2, int base,St
         }
 
          */
+
         int beginning = 0;
-        int end = 202;
-        for(int i = 8; i >0; i--) {
+        int end = 30;
+        for(int i = 100; i <= 2000; i+=200) {
+            System.out.println("length: " + i);
             double total = 0;
             int count = 0;
-            System.out.println("length " + i);
-            System.out.println("version 0");
-            readFile(total,count,beginning,end);
-            beginning += 202;
-            end+=202;
-            System.out.println("version 1");
-            readFile(total,count,beginning,end);
-            beginning += 202;
-            end+=202;
+            for(int j = 0; j < 15; j++) {
+                System.out.println("index: " + j);
+                readFile(total,count,beginning,end);
+                beginning +=30;
+                end += 30;
+                readFile(total,count,beginning,end);
+                beginning += 30;
+                end += 30;
+            }
+
+            //System.out.println("length " + i);
+            //System.out.println("version 0");
+            //(total,count,beginning,end);
+            //beginning += 202;
+            //+=202;
+            //.out.println("version 1");
+            ////eadFile(total,count,beginning,end);
+//            end+=202;
 
         }
+
+
 
 
 
